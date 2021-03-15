@@ -1,0 +1,598 @@
+.workspace-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  .delete-panel {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100;
+    border: none;
+    p {
+      margin: 0 auto;
+    }
+    .button-wrapper {
+      margin: 0 auto;
+      margin-top: 25px;
+
+      .delete-btn {
+        color: $white;
+      }
+      button {
+        color: $blue;
+        margin: 0 10px;
+      }
+    }
+  }
+  .workspace-options {
+    display: none;
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    height: 80px;
+    padding: 0 10%;
+    background-color: $dark;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    z-index: 10;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: $font;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+  .track-list-container {
+    width: 100%;
+    height: 100%;
+    // padding: 25px;
+    position: relative;
+    .track-list-header {
+      height: 50px;
+      display: grid;
+      grid-template-columns: 0.4fr 0.6fr 0.4fr;
+      margin: 0 20px;
+      p {
+        text-align: center;
+        margin: auto 0;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+    .track-list-scroll {
+      height: calc(100vh - 210px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow-x: auto;
+      padding: 10px;
+      margin-top: -10px;
+      .track-container {
+        width: 90%;
+        // height: 100px;
+        background-color: $white;
+        box-shadow: $divShadow;
+        border-radius: 21px;
+        display: grid;
+        grid-template-columns: 0.4fr 0.6fr 0.4fr;
+        padding: 20px;
+        margin: 10px auto;
+        position: relative;
+        display: flex;
+        .play-audio {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: none;
+          border: none;
+          outline: none;
+          z-index: 3;
+        }
+        .play-audio:hover {
+          cursor: pointer;
+        }
+        .track-details {
+          display: flex;
+          flex-direction: column;
+          align-self: center;
+          position: relative;
+          z-index: 5;
+          .track-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+          }
+          .track-date {
+            font-size: 0.7rem;
+            font-weight: 500;
+          }
+        }
+        .track-scrub {
+          width: 100%;
+          display: flex;
+          align-self: center;
+          .scrub {
+            width: 80%;
+            height: 5px;
+            border-radius: 50px;
+            background-color: $dark;
+            margin: auto 0;
+          }
+          .track-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 15px;
+          }
+        }
+        .track-options {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: auto;
+          width: 120px;
+          position: relative;
+          z-index: 5;
+          button {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            margin-left: 20px;
+            cursor: pointer;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .no-tracks-p {
+          font-size: 1rem;
+          font-weight: 600;
+          opacity: 60%;
+          margin: 0 auto;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .lyrics-container,
+  .tabs-container {
+    width: 100%;
+    height: 100%;
+    padding: 0 25px;
+    position: relative;
+    .lyric-tab-header {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding-left: 43px;
+      .add-btn {
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        box-shadow: $divShadow;
+        margin: auto 0;
+        margin-left: auto;
+        margin-right: 40px;
+        cursor: pointer;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .lyric-tab-top {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .button-container {
+        display: flex;
+        margin-left: auto;
+        button {
+          width: 40px;
+          height: 40px;
+          margin-left: 10px;
+          border-radius: 50%;
+          background: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          img {
+            width: 100%;
+          }
+        }
+        .edit-btn {
+          img {
+            width: 40%;
+          }
+        }
+      }
+    }
+    .default-workspace {
+      width: 90%;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      justify-content: center;
+      background-color: $white;
+      box-shadow: $divShadow;
+      border-radius: 21px;
+      margin: 15px auto;
+      p {
+        font-size: 1rem;
+        font-weight: 600;
+        opacity: 60%;
+        margin: 0 auto;
+        margin-bottom: 15px;
+      }
+      button {
+        background: none;
+        border: none;
+        outline: none;
+        background-color: $blue;
+        color: $white;
+        padding: 5px 25px;
+        border-radius: 9px;
+        margin: auto;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      button:active {
+        transform: scale(0.9);
+      }
+    }
+    .lyric-tab-scroll-container {
+      height: calc(100vh - 210px);
+      width: 100%;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      overflow-x: scroll;
+      padding: 10px;
+      margin-top: -10px;
+      .lyric-tab-container,
+      .tab-container {
+        list-style-type: none;
+        width: 90%;
+        min-height: 80px;
+        margin: 0 auto;
+        background-color: $white;
+        box-shadow: $divShadow;
+        border-radius: 21px;
+        padding: 10px 25px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        position: relative;
+        .lyric-content {
+          margin: 10px 0;
+          p {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+        }
+        .tab-grid {
+          display: grid;
+          grid-template-columns: repeat(11, 1fr);
+          grid-template-rows: repeat(6, 1fr);
+          width: 100%;
+          position: relative;
+          margin-top: 15px;
+          padding-bottom: 15px;
+          .grid-lines {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 1px;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(6, 20px);
+            gap: 6.5px;
+            z-index: 5;
+            .line {
+              height: 2px;
+              border-radius: 50px;
+              background-color: $inputGrey;
+              margin: auto 0;
+            }
+          }
+          span {
+            z-index: 6;
+            p {
+              margin-bottom: 4.5px;
+              text-align: center;
+              background-color: white;
+              border-radius: 25px;
+              font-weight: 600;
+              color: $dark;
+            }
+          }
+        }
+      }
+      .tab-container {
+        min-height: 250px;
+      }
+    }
+  }
+}
+.recorder-container {
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  z-index: 15;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 30px;
+  width: auto;
+  height: 70px;
+  background-color: $dark;
+  box-shadow: $divShadow;
+  border-radius: 22px 22px 0 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  .create-btn-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    .create-btns {
+      background: none;
+      border: none;
+      outline: none;
+      width: 40px;
+      height: 40px;
+      margin: 0 7px;
+      cursor: pointer;
+      transition: 0.1s;
+      border-radius: 50%;
+      background-color: $lightGreen;
+      img {
+        width: 100%;
+        transition: 0.2s;
+      }
+    }
+    .create-btns:active {
+      img {
+        transform: scale(0.8);
+      }
+    }
+    #record {
+      background-color: $red;
+    }
+    #create-lyrics {
+      background-color: $lightGreen;
+    }
+    #create-tabs {
+      background-color: $lightBlue;
+    }
+  }
+  .repsonsive-ws-menu {
+    display: none;
+    margin-left: 15px;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: $font;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: $white;
+      opacity: 0.5;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .active-btn {
+      opacity: 1;
+    }
+  }
+
+  .track-popup {
+    width: 300px;
+    height: 150px;
+    background-color: $dark;
+    padding: 15px;
+    position: absolute;
+    margin-left: 50%;
+    left: -150px;
+    top: -160px;
+    z-index: 20;
+    border-radius: 18px;
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin: 0 auto;
+      span {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        label {
+          font-size: 1rem;
+          font-weight: 500;
+          color: white;
+          margin-left: 15px;
+          margin-bottom: 5px;
+        }
+        input {
+          padding: 5px 15px;
+          border: none;
+          outline: none;
+          background-color: $lightBlue;
+          border-radius: 3px;
+          color: $dark;
+          font-family: $font;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+      }
+      input[type="submit"] {
+        cursor: pointer;
+        background-color: $blue;
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-radius: 9px;
+        color: white;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.loading-save {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark;
+  color: $white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.workspace-reszized {
+  width: 100%;
+  // height: 80vh;
+  display: flex;
+  flex-direction: column;
+  .workspace-resize-buttons {
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    height: 80px;
+    padding: 0 10%;
+    background-color: $dark;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    z-index: 10;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: $font;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+  .track-list-container,
+  .tabs-container,
+  .lyrics-container {
+    // width: 100%;
+    // height: 90%;
+    margin: 0 auto;
+    margin-top: 90px;
+    .track-list-scroll,
+    .lyric-tab-scroll-container {
+      height: calc(100vh - 305px);
+      .lyrics-container,
+      .lyric-tab-top {
+        .button-container {
+          button {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            border-radius: 50%;
+            img {
+              width: 100%;
+            }
+          }
+          .edit-btn {
+            img {
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .workspace-container {
+    grid-template-columns: repeat(1, 1fr);
+    .repsonsive-ws-menu {
+      display: flex;
+    }
+    .col-1 {
+      grid-column-start: 1;
+      grid-row-start: 1;
+      width: 100%;
+    }
+    .col-2 {
+      display: none;
+    }
+    .col-3 {
+      display: none;
+    }
+    .recorder-container .repsonsive-ws-menu {
+      .active-1 {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (min-width: 611px) and (max-width: 1000px) {
+  .workspace-container {
+    grid-template-columns: repeat(2, 1fr);
+    .repsonsive-ws-menu {
+      display: flex;
+    }
+    .hide-1 {
+      display: none;
+    }
+    .col-1 {
+      grid-column-start: 1;
+      grid-row-start: 1;
+      width: 100%;
+    }
+    .col-2 {
+      grid-column-start: 2;
+      grid-row-start: 1;
+      width: 100%;
+    }
+    .col-3 {
+      display: none;
+      width: 100%;
+    }
+    .recorder-container .repsonsive-ws-menu {
+      .active-1 {
+        opacity: 1;
+      }
+      .active-2 {
+        opacity: 1;
+      }
+    }
+  }
+}
