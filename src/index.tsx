@@ -61,6 +61,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     return fetch('https://foliotune.herokuapp.com/refresh_token', {
       method: 'POST',
       credentials: 'include',
+      mode: 'cors',
     })
   },
   handleFetch: (accessToken) => {
