@@ -13,10 +13,16 @@ import { onError } from 'apollo-link-error'
 import { Provider } from "react-redux";
 import {store} from "./redux/store";
 
+// const httpLink = createHttpLink({
+//   uri: 'http://localhost:4000/graphql',
+//   credentials: 'include',
+// })
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://foliotune.herokuapp.com/graphql',
   credentials: 'include',
 })
+
 
 const authLink = setContext((_, { headers }) => {
   const token = getAccessToken()
@@ -52,7 +58,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: () => {
-    return fetch('http://localhost:4000/refresh_token', {
+    return fetch('https://foliotune.herokuapp.com/refresh_token', {
       method: 'POST',
       credentials: 'include',
     })
