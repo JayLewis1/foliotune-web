@@ -19,21 +19,24 @@ import {store} from "./redux/store";
 // })
 
 const httpLink = createHttpLink({
-  uri: 'https://foliotune.herokuapp.com/graphql',
+  uri: 'http://localhost:4000/graphql',
   credentials: 'include',
 })
 
 
 const authLink = setContext((_, { headers }) => {
   const token = getAccessToken()
-
+  console.log(token);
+  console.log(headers);
+  let cookieValue = document.cookie
+  console.log(`This is tht cookie ${cookieValue}`);
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
     },
   }
-})
+}) 
 
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: 'accessToken',
@@ -43,6 +46,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     if (!token) {
       return true
     }
+
 
     try {
       const { exp }: any = jwtDecode(token)
@@ -65,6 +69,8 @@ const tokenRefreshLink = new TokenRefreshLink({
     })
   },
   handleFetch: (accessToken) => {
+    
+    console.log(`Fetching the accessToken ${accessToken}`);
     setAccessToken(accessToken)
   },
   handleError: (err) => {
