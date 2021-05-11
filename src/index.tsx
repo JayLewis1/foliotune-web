@@ -18,8 +18,10 @@ import {store} from "./redux/store";
 //   credentials: 'include',
 // })
 
+const url = "http://localhost:3001"
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: `${url}/graphql`,
   credentials: 'include',
 })
 
@@ -62,7 +64,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: () => {
-    return fetch('https://foliotune.herokuapp.com/refresh_token', {
+    return fetch(`${url}/refresh_token`, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
