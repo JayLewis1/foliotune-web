@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, from } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { TokenRefreshLink } from 'apollo-link-token-refresh'
 import jwtDecode from 'jwt-decode'
